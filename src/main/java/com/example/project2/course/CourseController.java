@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/course")
 public class CourseController {
-    private CourseService courseService;
+    private final CourseService courseService;
 
     //inject the service to controller class
     @Autowired

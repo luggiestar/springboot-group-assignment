@@ -1,6 +1,20 @@
 package com.example.project2.course;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Course {
+    @Id
+    @SequenceGenerator(
+            name = "course_sequence",
+            sequenceName = "course_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "course_sequence"
+    )
     private Long id;
     private String code;
     private String name;
