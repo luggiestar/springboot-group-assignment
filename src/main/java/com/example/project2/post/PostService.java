@@ -1,22 +1,25 @@
 package com.example.project2.post;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
 @Service
 public class PostService {
+    private final PostRepository postRepository;
 
-    @GetMapping
+    @Autowired
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
+
     public List<Post> getPosts() {
-        return List.of(
-                new Post(
-                        1L,
-                        "Song",
-                        "Write"
-                )
-        );
+        return postRepository.findAll();
+    }
+
+
+    public void savePost(Post post) {
+        System.out.println(post);
     }
 }

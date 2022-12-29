@@ -1,8 +1,7 @@
 package com.example.project2.post;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,8 +14,13 @@ public class PostController {
     public PostController(PostService postService) {
         this.postService = postService;
     }
-
+    @GetMapping
     public List<Post> getPosts() {
         return this.postService.getPosts();
+    }
+
+    @PostMapping
+    public void savePost(@RequestBody Post post) {
+        postService.savePost(post);
     }
 }

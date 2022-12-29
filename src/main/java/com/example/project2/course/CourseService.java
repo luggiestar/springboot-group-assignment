@@ -6,13 +6,16 @@ import java.util.List;
 
 @Service
 public class CourseService {
+    private final CourseRepository courseRepository;
+
+    public CourseService(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
     public List<Course> getCourses() {
-        return List.of(
-                new Course(
-                        1L,
-                        "Intro to databsse",
-                        "CSS114".toUpperCase()
-                )
-        );
+        return this.courseRepository.findAll();
+    }
+
+    public void createNewCourse(Course course) {
+        System.out.println(course);
     }
 }
